@@ -17,6 +17,9 @@ cluster_firewall: true
 # enable cluster on boot
 cluster_enable_service: true
 
+# enable pcsd GUI
+cluster_enable_gui: false
+
 # configure cluster with fence_xvm fencing device ?
 # this will copy key defined by 'fence_xvm_key' to nodes and add fencing devices to cluster
 # NOTE: you need to define 'hypervisor_hostname' in the inventory for each cluster node

@@ -41,6 +41,15 @@
 - name: Enable and start PCSD service
   service: name=pcsd enabled=yes state=started
 
+- name: Enable PCSD GUI if required
+  notify: restart pcsd
+  lineinfile:
+    dest: /etc/sysconfig/pcsd
+    state: present
+    regexp: '^PCSD_DISABLE_GUI=true'
+    line: 'PCSD_DISABLE_GUI=false'
+  when: cluster_enable_gui == true
+
 - name: Setup firewall for RHEL/CentOS 6 systems (iptables)
   include: firewall-el6.yml
   when: ansible_distribution_major_version == "6" and cluster_firewall == true
