@@ -1,3 +1,4 @@
 ---
 - name: Enable 'high-availability' firewalld service
+  tags: ha-cluster-pacemaker
   firewalld: service=high-availability permanent=true state=enabled immediate=true

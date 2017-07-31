@@ -1,10 +1,12 @@
 ---
 - name: Copy iptables configuration
+  tags: ha-cluster-pacemaker
   copy: src=iptables dest=/etc/sysconfig/iptables owner=root group=root
   notify:
     - restart iptables
 
 - name: Enable and start iptables service
+  tags: ha-cluster-pacemaker
   service: name=iptables enabled=yes state=started
 
 - meta: flush_handlers
